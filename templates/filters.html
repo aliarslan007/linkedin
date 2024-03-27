@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="main">
+    <div class="main-first-section">            
+        <li><p><b>Filters</b></p></li>
+        <li style="float: right; height:40px; width:40px"><img src="images/filters.png"  alt=""></li>     
+    </div>
+    <hr>
+    <div class="filters">
+        <ul>
+            <form action="{% url 'filter' %}" method="get"> <!-- Make sure to add the URL of your filter view -->
+                <li><input type="text" id="company-name" style="color: black; width: 350px;" placeholder="e.g., company, company2, company3" name="company_name"></li>                
+                <li><input type="text" id="company-name2" style="color: black;width: 350px;" placeholder="e.g., job1,job2,job3" name="job_title"></li>                
+                <li><button type="submit">Filter</button></li>
+            </form>
+        </ul>
+    </div>
+    <hr>
+    <div class="main-first-section" id="main-first-section">      
+        <li class="results">380K+ RESULTS</li>       
+        <li class="results" style="margin-left: 20px;"><b>See Search Breakdown</b></li>
+        {% if employee_data_list %}
+            <li class="results" style="margin-left: 20px;"><a href="{% url 'savesearches' %} " style="border: 1px solid #0a66c2; border-radius: 14px; padding: 3px 5px; color: #0a66c2;">Save this Search</a></li>
+        {% endif %}           
+        <li style="float: right;"><p>1-25 ></p></li>       
+    </div>
+    <hr>        
+    {% for employee_data in employee_data_list %}
+            {% for employee in employee_data.employees %} 
+               
+                <div class="main-post-content-section">
+                    <div class="post-side">
+                        <ul>
+                            <li> 
+                                <img class="post-image" src="{{ employee.profile.profile_pic_url }}" alt="">
+                            </li>
+                            <li><span id="name">{{ employee.profile.full_name }}</span><br> <span id="designation">{{ employee.profile.occupation }}</span> <br><span id="countries">{{ employee.profile.city }}, {{ employee.profile.country_full_name }} - {{ employee.profile.state }}</span></li>
+                        </ul>
+                    </div>        
+                    <div class="profile-info">                
+                            <a href="" style="color: #0a66c2;">+Follow </a>                      
+                    </div>             
+                </div>
+                <hr>  
+            {% endfor %}
+    {% endfor %}
+    
+</div> 
+{% endblock content %}

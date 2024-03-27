@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+</head>
+<body>
+    <nav class="linkedin-navbar">
+        <div class="linkedin-navbar-left">
+         <a href="index.html" class="logo"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+         <form id="search-form" method="GET" action="{% url 'home' %}">
+            <div class="search-box">
+                <img src="{% static 'images/search.png' %}" >
+                <input id="search-input" type="text" name="search_query" placeholder="Search for LinkedIn profile">
+            </div>
+        </form>
+        </div>
+        <div class="navbar-center">
+         <ul>
+             <li><a href="#" class="active-link"><img src="{% static 'images/home.png' %}" alt="home"> <span>Home</span></a></li>
+             <li><a href="#"><img src="{% static 'images/network.png' %}" alt="network"> <span>My Network</span></a></li>
+             <li><a href="#"><img src="{% static 'images/jobs.png' %}" alt="jobs"> <span>Jobs</span></a></li>
+             <li><a href="#"><img src="{% static 'images/message.png' %}" alt="message"> <span>Messaging</span></a></li>
+             <li><a href="#"><img src="{% static 'images/notification.png' %}" alt="notification"> <span>Notifications</span></a></li>
+         </ul>
+        </div>
+        <div class="navbar-right">
+         <div class="online">
+         <img src="{% static 'images/user-1.jpg' %}" class="nav-profile-img">
+         </div> 
+        </div>
+        <!----Dropdown menu-->
+         
+ 
+     </nav>
+     
+</body>
+</html>
